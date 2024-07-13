@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Kalkulator Kalorii</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #83706c;
+        }
+        .container {
+            width: 300px;
+            padding: 20px;
+            background-color: #f1f1f1;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        label, select, input {
+            display: block;
+            margin-bottom: 10px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Kalkulator kalorii</h1>
+    <form action="#" th:action="@{/calorie-calculator}" th:object="${calorieCalculatorForm}" method="post">
+        <label for="age">Wiek:</label>
+        <input type="number" id="age" th:field="*{age}" />
+
+        <label for="gender">Płeć:</label>
+        <select id="gender" th:field="*{gender}">
+            <option value="male">Mężczyzna</option>
+            <option value="female">Kobieta</option>
+        </select>
+
+        <label for="height">Wzrost (cm):</label>
+        <input type="number" id="height" th:field="*{height}" />
+
+        <label for="weight">Waga (kg):</label>
+        <input type="number" id="weight" th:field="*{weight}" />
+
+        <label for="activityLevel">Dzienna aktywność:</label>
+        <select id="activityLevel" th:field="*{activityLevel}">
+            <option value="sedentary">Niewielka</option>
+            <option value="light">Niska (aktywność 1-3/tydzień)</option>
+            <option value="moderate">Średnia (codzienna aktywność)</option>
+            <option value="active">Wysoka (intensywne treningi 6-7/tydzień)</option>
+            <option value="very active">Bardzo wysoka (codzienne intensywne treningi)</option>
+        </select>
+
+        <button type="submit">Policz</button>
+    </form>
+</div>
+</body>
+</html>
